@@ -1,9 +1,9 @@
 # vscode 실행방법
 
-To start the development server, run:
+패키지 설치 및 개발서버 구동
 
 ```bash
-npm run dev
+npm install & npm run dev
 ```
 
 # 기본문법
