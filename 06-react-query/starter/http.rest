@@ -1,0 +1,24 @@
+@baseUrl = http://localhost:5000/api/tasks
+
+GET {{baseUrl}}/
+
+###
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+    "title": "some value"
+}
+
+###
+
+PATCH {{baseUrl}}/V14Dlj640cePOAo2Tj0g2
+Content-Type: application/json
+
+{
+    "isDone": true
+}
+
+###
+
+DELETE {{baseUrl}}/V14Dlj640cePOAo2Tj0g2

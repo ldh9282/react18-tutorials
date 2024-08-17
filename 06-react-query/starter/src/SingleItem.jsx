@@ -1,27 +1,37 @@
+import { useMutation } from "@tanstack/react-query";
+import customFetch from "./utils";
+import { toast } from "react-toastify";
+import { useDeleteTask, useEditTask } from "./reactQueryCustomhooks";
+
 const SingleItem = ({ item }) => {
-  return (
-    <div className='single-item'>
-      <input
-        type='checkbox'
-        checked={item.isDone}
-        onChange={() => console.log('edit task')}
-      />
-      <p
-        style={{
-          textTransform: 'capitalize',
-          textDecoration: item.isDone && 'line-through',
-        }}
-      >
-        {item.title}
-      </p>
-      <button
-        className='btn remove-btn'
-        type='button'
-        onClick={() => console.log('delete task')}
-      >
-        delete
-      </button>
-    </div>
-  );
+    const { editTask } = useEditTask();
+    const { deleteTask, deleteTaskLoading } = useDeleteTask();
+    return (
+        <div className="single-item">
+            <input
+                type="checkbox"
+                checked={item.isDone}
+                onChange={() =>
+                    editTask({ taskId: item.id, isDone: !item.isDone })
+                }
+            />
+            <p
+                style={{
+                    textTransform: "capitalize",
+                    textDecoration: item.isDone && "line-through",
+                }}
+            >
+                {item.title}
+            </p>
+            <button
+                className="btn remove-btn"
+                type="button"
+                onClick={() => deleteTask(item.id)}
+                disabled={deleteTaskLoading}
+            >
+                delete
+            </button>
+        </div>
+    );
 };
 export default SingleItem;
